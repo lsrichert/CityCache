@@ -12224,9 +12224,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lsric\\workspace\\final-capstone\\final-capstone\\final-capstone.csproj",
-      "projectName": "final-capstone",
-      "projectPath": "C:\\Users\\lsric\\workspace\\final-capstone\\final-capstone\\final-capstone.csproj",
+      "projectUniqueName": "C:\\Users\\lsric\\workspace\\final-capstone\\final-capstone\\FinalCapstone.csproj",
+      "projectName": "FinalCapstone",
+      "projectPath": "C:\\Users\\lsric\\workspace\\final-capstone\\final-capstone\\FinalCapstone.csproj",
       "packagesPath": "C:\\Users\\lsric\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\lsric\\workspace\\final-capstone\\final-capstone\\obj\\",
       "projectStyle": "PackageReference",
