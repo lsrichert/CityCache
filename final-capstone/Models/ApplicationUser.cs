@@ -14,6 +14,6 @@ namespace final_capstone.Models
 
         }
 
-        //public Recommendation Recommendation { get; set; }
+        public virtual ICollection<Recommendation> Recommendations { get; set; }
     }
 }
