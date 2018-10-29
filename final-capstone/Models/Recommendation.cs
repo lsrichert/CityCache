@@ -19,7 +19,6 @@ namespace final_capstone.Models
         [StringLength(50, ErrorMessage = "Please shorten the description to 50 characters")]
         public string Description { get; set; }
 
-        [Required]
         public string StreetAddress { get; set; }
 
         public string WebsiteURL { get; set; }
@@ -29,6 +28,12 @@ namespace final_capstone.Models
 
         [Required]
         public int ApplicationUserId { get; set; }
+
+        [Required]
+        public int NeighborhoodId { get; set; }
+
+        [Required]
+        public int RecommendationTypeId { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
 
