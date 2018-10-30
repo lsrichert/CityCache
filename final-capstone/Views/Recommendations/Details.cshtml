@@ -1,0 +1,66 @@
+﻿@model final_capstone.Models.Recommendation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recommendation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StreetAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WebsiteURL)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WebsiteURL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DefaultView)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DefaultView)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Neighborhood)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Neighborhood.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecommendationType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecommendationType.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RecommendationId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
