@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using final_capstone.Data;
 using final_capstone.Models;
+using final_capstone.Models.RecommendationViewModels;
 
 namespace final_capstone.Controllers
 {
@@ -49,9 +50,12 @@ namespace final_capstone.Controllers
         // GET: Recommendations/Create
         public IActionResult Create()
         {
-            ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name");
-            ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name");
-            return View();
+            RecommendationCreateViewModel createRecommendation = new RecommendationCreateViewModel();
+            return View(createRecommendation);
+
+            //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name");
+            //ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name");
+            //return View();
         }
 
         // POST: Recommendations/Create
@@ -67,9 +71,13 @@ namespace final_capstone.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
-            ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name", recommendation.RecommendationTypeId);
-            return View(recommendation);
+
+            RecommendationCreateViewModel createRecommendation = new RecommendationCreateViewModel();
+            return View(createRecommendation);
+
+            //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
+            //ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name", recommendation.RecommendationTypeId);
+            //return View(recommendation);
         }
 
         // GET: Recommendations/Edit/5
