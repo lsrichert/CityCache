@@ -50,7 +50,7 @@ namespace final_capstone.Controllers
         // GET: Recommendations/Create
         public IActionResult Create()
         {
-            RecommendationCreateViewModel createRecommendation = new RecommendationCreateViewModel();
+            RecommendationCreateViewModel createRecommendation = new RecommendationCreateViewModel(_context);
             return View(createRecommendation);
 
             //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name");

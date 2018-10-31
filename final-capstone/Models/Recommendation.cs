@@ -29,16 +29,16 @@ namespace final_capstone.Models
         [Required]
         public bool DefaultView { get; set; }
 
-        [Required]
+        //[Required]
         public int ApplicationUserId { get; set; }
 
-        [Required]
+        //[Required]
         public int NeighborhoodId { get; set; }
 
-        [Required]
+        //[Required]
         public int RecommendationTypeId { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         public Neighborhood Neighborhood { get; set; }
 
