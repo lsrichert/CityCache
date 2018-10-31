@@ -13,14 +13,17 @@ namespace final_capstone.Models
         public int RecommendationId { get; set; }
 
         [Required]
+        [Display(Name = "Place")]
         public string Name { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Please shorten the description to 50 characters")]
         public string Description { get; set; }
 
+        [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
+        [Display(Name = "Website")]
         public string WebsiteURL { get; set; }
 
         [Required]
