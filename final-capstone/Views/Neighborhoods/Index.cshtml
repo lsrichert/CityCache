@@ -1,4 +1,6 @@
-﻿@model IEnumerable<final_capstone.Models.Neighborhood>
+﻿@*I commented out the details and edit buttons at the bottom of this code because I don't currently need those'*@
+
+@model IEnumerable<final_capstone.Models.Neighborhood>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,8 +27,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.NeighborhoodId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NeighborhoodId">Details</a> |
+                @*<a asp-action="Edit" asp-route-id="@item.NeighborhoodId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.NeighborhoodId">Details</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.NeighborhoodId">Delete</a>
             </td>
         </tr>

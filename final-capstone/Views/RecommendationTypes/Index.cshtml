@@ -1,4 +1,6 @@
-﻿@model IEnumerable<final_capstone.Models.RecommendationType>
+﻿@*//I commented out the details and edit link at the bottom because I don't currently need that code.'*@
+
+@model IEnumerable<final_capstone.Models.RecommendationType>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,8 +27,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.RecommendationTypeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RecommendationTypeId">Details</a> |
+                @*<a asp-action="Edit" asp-route-id="@item.RecommendationTypeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RecommendationTypeId">Details</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.RecommendationTypeId">Delete</a>
             </td>
         </tr>

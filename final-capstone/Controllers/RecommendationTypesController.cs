@@ -26,22 +26,22 @@ namespace final_capstone.Controllers
         }
 
         // GET: RecommendationTypes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var recommendationType = await _context.RecommendationType
-                .FirstOrDefaultAsync(m => m.RecommendationTypeId == id);
-            if (recommendationType == null)
-            {
-                return NotFound();
-            }
+        //    var recommendationType = await _context.RecommendationType
+        //        .FirstOrDefaultAsync(m => m.RecommendationTypeId == id);
+        //    if (recommendationType == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(recommendationType);
-        }
+        //    return View(recommendationType);
+        //}
 
         // GET: RecommendationTypes/Create
         public IActionResult Create()
@@ -66,55 +66,55 @@ namespace final_capstone.Controllers
         }
 
         // GET: RecommendationTypes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var recommendationType = await _context.RecommendationType.FindAsync(id);
-            if (recommendationType == null)
-            {
-                return NotFound();
-            }
-            return View(recommendationType);
-        }
+        //    var recommendationType = await _context.RecommendationType.FindAsync(id);
+        //    if (recommendationType == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(recommendationType);
+        //}
 
-        // POST: RecommendationTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RecommendationTypeId,Name")] RecommendationType recommendationType)
-        {
-            if (id != recommendationType.RecommendationTypeId)
-            {
-                return NotFound();
-            }
+        //// POST: RecommendationTypes/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("RecommendationTypeId,Name")] RecommendationType recommendationType)
+        //{
+        //    if (id != recommendationType.RecommendationTypeId)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(recommendationType);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RecommendationTypeExists(recommendationType.RecommendationTypeId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(recommendationType);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(recommendationType);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!RecommendationTypeExists(recommendationType.RecommendationTypeId))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(recommendationType);
+        //}
 
         // GET: RecommendationTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
