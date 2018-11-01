@@ -1,4 +1,4 @@
-﻿@model final_capstone.Models.Recommendation
+﻿@model final_capstone.Models.RecommendationViewModels.RecommendationEditViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -14,46 +14,46 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="RecommendationId" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Recommendation.Name" class="control-label"></label>
+                <input asp-for="Recommendation.Name" class="form-control" />
+                <span asp-validation-for="Recommendation.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="Recommendation.Description" class="control-label"></label>
+                <input asp-for="Recommendation.Description" class="form-control" />
+                <span asp-validation-for="Recommendation.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StreetAddress" class="control-label"></label>
-                <input asp-for="StreetAddress" class="form-control" />
-                <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                <label asp-for="Recommendation.StreetAddress" class="control-label"></label>
+                <input asp-for="Recommendation.StreetAddress" class="form-control" />
+                <span asp-validation-for="Recommendation.StreetAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WebsiteURL" class="control-label"></label>
-                <input asp-for="WebsiteURL" class="form-control" />
-                <span asp-validation-for="WebsiteURL" class="text-danger"></span>
+                <label asp-for="Recommendation.WebsiteURL" class="control-label"></label>
+                <input asp-for="Recommendation.WebsiteURL" class="form-control" />
+                <span asp-validation-for="Recommendation.WebsiteURL" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="DefaultView" /> @Html.DisplayNameFor(model => model.DefaultView)
-                    </label>
-                </div>
-            </div>*@
+            <div class="checkbox">
+                <label>
+                    <input asp-for="Recommendation.DefaultView" /> @Html.DisplayNameFor(model => model.DefaultView)
+                </label>
+            </div>
+        </div>*@
             <div class="form-group">
-                <label asp-for="ApplicationUserId" class="control-label"></label>
-                <input asp-for="ApplicationUserId" class="form-control" />
-                <span asp-validation-for="ApplicationUserId" class="text-danger"></span>
+                <label asp-for="Recommendation.ApplicationUserId" class="control-label"></label>
+                <input asp-for="Recommendation.ApplicationUserId" class="form-control" />
+                <span asp-validation-for="Recommendation.ApplicationUserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NeighborhoodId" class="control-label"></label>
-                <select asp-for="NeighborhoodId" class="form-control" asp-items="ViewBag.NeighborhoodId"></select>
-                <span asp-validation-for="NeighborhoodId" class="text-danger"></span>
+                <label asp-for="Recommendation.NeighborhoodId" class="control-label"></label>
+                <select asp-for="Recommendation.NeighborhoodId" class="form-control" asp-items="ViewBag.NeighborhoodId"></select>
+                <span asp-validation-for="Recommendation.NeighborhoodId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RecommendationTypeId" class="control-label"></label>
-                <select asp-for="RecommendationTypeId" class="form-control" asp-items="ViewBag.RecommendationTypeId"></select>
-                <span asp-validation-for="RecommendationTypeId" class="text-danger"></span>
+                <label asp-for="Recommendation.RecommendationTypeId" class="control-label"></label>
+                <select asp-for="Recommendation.RecommendationTypeId" class="form-control" asp-items="ViewBag.RecommendationTypeId"></select>
+                <span asp-validation-for="Recommendation.RecommendationTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
