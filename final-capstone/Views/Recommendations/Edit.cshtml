@@ -12,7 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="RecommendationId" />
+            <input type="hidden" asp-for="Recommendation.RecommendationId" />
             <div class="form-group">
                 <label asp-for="Recommendation.Name" class="control-label"></label>
                 <input asp-for="Recommendation.Name" class="form-control" />
@@ -33,13 +33,13 @@
                 <input asp-for="Recommendation.WebsiteURL" class="form-control" />
                 <span asp-validation-for="Recommendation.WebsiteURL" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
+            <div class="form-group">
             <div class="checkbox">
                 <label>
                     <input asp-for="Recommendation.DefaultView" /> @Html.DisplayNameFor(model => model.Recommendation.DefaultView)
                 </label>
             </div>
-        </div>*@
+        </div>
             <div class="form-group">
                 <label asp-for="Recommendation.ApplicationUserId" class="control-label"></label>
                 <input asp-for="Recommendation.ApplicationUserId" class="form-control" />

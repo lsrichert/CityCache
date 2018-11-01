@@ -109,6 +109,7 @@ namespace final_capstone.Controllers
             }
 
             RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel(_context);
+            editRecommendation.Recommendation = recommendation;
             return View(editRecommendation);
 
             //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);

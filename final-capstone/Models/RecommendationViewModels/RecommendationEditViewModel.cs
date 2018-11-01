@@ -32,6 +32,7 @@ namespace final_capstone.Models.RecommendationViewModels
 
         public RecommendationEditViewModel()
         {
-        }
+    }
     }
 }
+
