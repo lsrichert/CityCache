@@ -21,10 +21,24 @@ namespace final_capstone.Controllers
         }
 
         // GET: Recommendations
-        public async Task<IActionResult> Index()
+  
+        public async Task<IActionResult> Index(string searchString)
         {
             var applicationDbContext = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType);
+
+            //var recommendations = from r in _context.Recommendation
+            //             select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var searchResults = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType).Where(r => r.Neighborhood.Name.Contains(searchString));
+                return View(await searchResults.ToListAsync());
+            }
+
             return View(await applicationDbContext.ToListAsync());
+
+            //var applicationDbContext = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType);
+            //return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Recommendations/Details/5
