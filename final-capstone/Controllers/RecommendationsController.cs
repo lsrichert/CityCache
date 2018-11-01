@@ -107,9 +107,14 @@ namespace final_capstone.Controllers
             {
                 return NotFound();
             }
-            ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
-            ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name", recommendation.RecommendationTypeId);
-            return View(recommendation);
+
+            RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel(_context);
+            editRecommendation.Recommendation = recommendation;
+            return View(editRecommendation);
+
+            //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
+            //ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name", recommendation.RecommendationTypeId);
+            //return View(recommendation);
         }
 
         // POST: Recommendations/Edit/5
@@ -144,9 +149,12 @@ namespace final_capstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
-            ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name", recommendation.RecommendationTypeId);
-            return View(recommendation);
+            RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel(_context);
+            return View(editRecommendation);
+
+            //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
+            //ViewData["RecommendationTypeId"] = new SelectList(_context.RecommendationType, "RecommendationTypeId", "Name", recommendation.RecommendationTypeId);
+            //return View(recommendation);
         }
 
         // GET: Recommendations/Delete/5
