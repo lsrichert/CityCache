@@ -36,7 +36,7 @@
             @*<div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input asp-for="Recommendation.DefaultView" /> @Html.DisplayNameFor(model => model.DefaultView)
+                    <input asp-for="Recommendation.DefaultView" /> @Html.DisplayNameFor(model => model.Recommendation.DefaultView)
                 </label>
             </div>
         </div>*@
@@ -47,12 +47,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Recommendation.NeighborhoodId" class="control-label"></label>
-                <select asp-for="Recommendation.NeighborhoodId" class="form-control" asp-items="ViewBag.NeighborhoodId"></select>
+                <select asp-for="Recommendation.NeighborhoodId" class="form-control" asp-items="@Model.Neighborhoods"></select>
                 <span asp-validation-for="Recommendation.NeighborhoodId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Recommendation.RecommendationTypeId" class="control-label"></label>
-                <select asp-for="Recommendation.RecommendationTypeId" class="form-control" asp-items="ViewBag.RecommendationTypeId"></select>
+                <select asp-for="Recommendation.RecommendationTypeId" class="form-control" asp-items="@Model.RecommendationTypes"></select>
                 <span asp-validation-for="Recommendation.RecommendationTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">

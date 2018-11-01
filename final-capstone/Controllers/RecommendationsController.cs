@@ -108,7 +108,7 @@ namespace final_capstone.Controllers
                 return NotFound();
             }
 
-            RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel();
+            RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel(_context);
             return View(editRecommendation);
 
             //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
@@ -148,7 +148,7 @@ namespace final_capstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel();
+            RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel(_context);
             return View(editRecommendation);
 
             //ViewData["NeighborhoodId"] = new SelectList(_context.Neighborhood, "NeighborhoodId", "Name", recommendation.NeighborhoodId);
