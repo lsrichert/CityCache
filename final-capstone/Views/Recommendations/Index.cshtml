@@ -1,4 +1,10 @@
-﻿@model IEnumerable<final_capstone.Models.Recommendation>
+﻿@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<final_capstone.Models.Recommendation>
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 
 @{
     ViewData["Title"] = "Index";
@@ -26,17 +32,17 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.StreetAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WebsiteURL)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.StreetAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WebsiteURL)
+                </th>*@
             @*<th>
-                @Html.DisplayNameFor(model => model.DefaultView)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.DefaultView)
+                </th>*@
             @*<th>
-                @Html.DisplayNameFor(model => model.ApplicationUserId)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.ApplicationUserId)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Neighborhood)
             </th>
@@ -47,38 +53,52 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.StreetAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WebsiteURL)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.DefaultView)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.ApplicationUserId)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Neighborhood.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecommendationType.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RecommendationId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RecommendationId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RecommendationId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.StreetAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WebsiteURL)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DefaultView)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ApplicationUserId)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Neighborhood.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecommendationType.Name)
+                </td>
+                <td>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+                            <ul class="nav navbar-nav navbar-right">
+                                @*<li>
+                                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                                </li>*@
+                                <a asp-action="Edit" asp-route-id="@item.RecommendationId">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.RecommendationId">Delete</a>
+                                @*<li>
+                                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+                                </li>*@
+                            </ul>
+                        </form>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.RecommendationId">Details</a> 
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
