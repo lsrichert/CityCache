@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using final_capstone.Data;
 using final_capstone.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace final_capstone.Controllers
 {
@@ -44,6 +45,7 @@ namespace final_capstone.Controllers
         //}
 
         // GET: Neighborhoods/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -53,6 +55,7 @@ namespace final_capstone.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NeighborhoodId,Name")] Neighborhood neighborhood)
         {
@@ -117,37 +120,37 @@ namespace final_capstone.Controllers
         //}
 
         // GET: Neighborhoods/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //    public async Task<IActionResult> Delete(int? id)
+        //    {
+        //        if (id == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-            var neighborhood = await _context.Neighborhood
-                .FirstOrDefaultAsync(m => m.NeighborhoodId == id);
-            if (neighborhood == null)
-            {
-                return NotFound();
-            }
+        //        var neighborhood = await _context.Neighborhood
+        //            .FirstOrDefaultAsync(m => m.NeighborhoodId == id);
+        //        if (neighborhood == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-            return View(neighborhood);
-        }
+        //        return View(neighborhood);
+        //    }
 
-        // POST: Neighborhoods/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var neighborhood = await _context.Neighborhood.FindAsync(id);
-            _context.Neighborhood.Remove(neighborhood);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //    // POST: Neighborhoods/Delete/5
+        //    [HttpPost, ActionName("Delete")]
+        //    [ValidateAntiForgeryToken]
+        //    public async Task<IActionResult> DeleteConfirmed(int id)
+        //    {
+        //        var neighborhood = await _context.Neighborhood.FindAsync(id);
+        //        _context.Neighborhood.Remove(neighborhood);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
 
-        private bool NeighborhoodExists(int id)
-        {
-            return _context.Neighborhood.Any(e => e.NeighborhoodId == id);
-        }
+        //    private bool NeighborhoodExists(int id)
+        //    {
+        //        return _context.Neighborhood.Any(e => e.NeighborhoodId == id);
+        //    }
     }
 }

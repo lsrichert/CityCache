@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using final_capstone.Data;
 using final_capstone.Models;
 using final_capstone.Models.RecommendationViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace final_capstone.Controllers
 {
@@ -62,6 +63,7 @@ namespace final_capstone.Controllers
         }
 
         // GET: Recommendations/Create
+        [Authorize]
         public IActionResult Create()
         {
             RecommendationCreateViewModel createRecommendation = new RecommendationCreateViewModel(_context);
@@ -76,6 +78,7 @@ namespace final_capstone.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RecommendationId,Name,Description,StreetAddress,WebsiteURL,DefaultView,ApplicationUserId,NeighborhoodId,RecommendationTypeId")] Recommendation recommendation)
         {
@@ -95,6 +98,7 @@ namespace final_capstone.Controllers
         }
 
         // GET: Recommendations/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -121,6 +125,7 @@ namespace final_capstone.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RecommendationId,Name,Description,StreetAddress,WebsiteURL,DefaultView,ApplicationUserId,NeighborhoodId,RecommendationTypeId")] Recommendation recommendation)
         {
@@ -158,6 +163,7 @@ namespace final_capstone.Controllers
         }
 
         // GET: Recommendations/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -179,6 +185,7 @@ namespace final_capstone.Controllers
 
         // POST: Recommendations/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
