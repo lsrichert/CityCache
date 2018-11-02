@@ -9,6 +9,7 @@ using final_capstone.Data;
 using final_capstone.Models;
 using final_capstone.Models.RecommendationViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace final_capstone.Controllers
 {
@@ -16,15 +17,21 @@ namespace final_capstone.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        //private readonly UserManager<ApplicationUser> _userManager;
+
         public RecommendationsController(ApplicationDbContext context)
         {
             _context = context;
+            //UserManager<ApplicationUser> userManager;
         }
+        //private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
 
         // GET: Recommendations
-  
+
         public async Task<IActionResult> Index(string searchString)
         {
+
             var applicationDbContext = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType);
 
             //var recommendations = from r in _context.Recommendation

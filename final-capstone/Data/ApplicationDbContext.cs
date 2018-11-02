@@ -167,7 +167,7 @@ namespace final_capstone.Data
                     Description = "Breakfast",
                     StreetAddress = "4943 N. Damen Ave.",
                     WebsiteURL = "overeasycafechicago.com",
-                    ApplicationUserId = 1,
+                    ApplicationUserId = user.Id,
                     NeighborhoodId = 1,
                     RecommendationTypeId = 1
 
@@ -180,7 +180,7 @@ namespace final_capstone.Data
                     Description = "Contemporary-American",
                     StreetAddress = "51 W. Hubbard St.",
                     WebsiteURL = "hub51chicago.com",
-                    ApplicationUserId = 1,
+                    ApplicationUserId = user.Id,
                     NeighborhoodId = 5,
                     RecommendationTypeId = 1
 
@@ -193,7 +193,7 @@ namespace final_capstone.Data
                     Description = "Comedy Club",
                     StreetAddress = "1616 N. Wells St.",
                     WebsiteURL = "secondcity.com",
-                    ApplicationUserId = 1,
+                    ApplicationUserId = user.Id,
                     NeighborhoodId = 11,
                     RecommendationTypeId = 2
 
@@ -206,7 +206,7 @@ namespace final_capstone.Data
                     Description = "American Comfort",
                     StreetAddress = "3455 N. Southport Ave.",
                     WebsiteURL = "crosbyschicago.com",
-                    ApplicationUserId = 1,
+                    ApplicationUserId = user.Id,
                     NeighborhoodId = 8,
                     RecommendationTypeId = 1
 
@@ -219,7 +219,7 @@ namespace final_capstone.Data
                     Description = "Bar",
                     StreetAddress = "5148 N. Clark St.",
                     WebsiteURL = "hopleafbar.com",
-                    ApplicationUserId = 1,
+                    ApplicationUserId = user.Id,
                     NeighborhoodId = 3,
                     RecommendationTypeId = 1
 

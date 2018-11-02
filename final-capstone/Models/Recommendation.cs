@@ -29,8 +29,7 @@ namespace final_capstone.Models
         [Required]
         public bool DefaultView { get; set; }
 
-        [Required]
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         [Required]
         public int NeighborhoodId { get; set; }
@@ -38,6 +37,7 @@ namespace final_capstone.Models
         [Required]
         public int RecommendationTypeId { get; set; }
 
+        [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public Neighborhood Neighborhood { get; set; }
