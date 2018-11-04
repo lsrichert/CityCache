@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using final_capstone.Data;
 using final_capstone.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace final_capstone.Controllers
 {
@@ -44,6 +45,7 @@ namespace final_capstone.Controllers
         //}
 
         // GET: RecommendationTypes/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -53,6 +55,7 @@ namespace final_capstone.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RecommendationTypeId,Name")] RecommendationType recommendationType)
         {
@@ -117,37 +120,37 @@ namespace final_capstone.Controllers
         //}
 
         // GET: RecommendationTypes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var recommendationType = await _context.RecommendationType
-                .FirstOrDefaultAsync(m => m.RecommendationTypeId == id);
-            if (recommendationType == null)
-            {
-                return NotFound();
-            }
+        //    var recommendationType = await _context.RecommendationType
+        //        .FirstOrDefaultAsync(m => m.RecommendationTypeId == id);
+        //    if (recommendationType == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(recommendationType);
-        }
+        //    return View(recommendationType);
+        //}
 
-        // POST: RecommendationTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var recommendationType = await _context.RecommendationType.FindAsync(id);
-            _context.RecommendationType.Remove(recommendationType);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //// POST: RecommendationTypes/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var recommendationType = await _context.RecommendationType.FindAsync(id);
+        //    _context.RecommendationType.Remove(recommendationType);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        private bool RecommendationTypeExists(int id)
-        {
-            return _context.RecommendationType.Any(e => e.RecommendationTypeId == id);
-        }
+        //private bool RecommendationTypeExists(int id)
+        //{
+        //    return _context.RecommendationType.Any(e => e.RecommendationTypeId == id);
+        //}
     }
 }

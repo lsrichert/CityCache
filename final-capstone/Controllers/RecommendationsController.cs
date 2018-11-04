@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using final_capstone.Data;
 using final_capstone.Models;
 using final_capstone.Models.RecommendationViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace final_capstone.Controllers
 {
@@ -15,15 +17,21 @@ namespace final_capstone.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public RecommendationsController(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public RecommendationsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
 
         // GET: Recommendations
-  
+
         public async Task<IActionResult> Index(string searchString)
         {
+
             var applicationDbContext = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType);
 
             //var recommendations = from r in _context.Recommendation
@@ -62,8 +70,13 @@ namespace final_capstone.Controllers
         }
 
         // GET: Recommendations/Create
-        public IActionResult Create()
+        [Authorize]
+        public async Task<IActionResult> Create()
         {
+            ApplicationUser user = await GetCurrentUserAsync();
+
+
+
             RecommendationCreateViewModel createRecommendation = new RecommendationCreateViewModel(_context);
             return View(createRecommendation);
 
@@ -76,11 +89,19 @@ namespace final_capstone.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RecommendationId,Name,Description,StreetAddress,WebsiteURL,DefaultView,ApplicationUserId,NeighborhoodId,RecommendationTypeId")] Recommendation recommendation)
+        public async Task<IActionResult> Create(Recommendation recommendation)
         {
+            ApplicationUser user = await GetCurrentUserAsync();
+
+            recommendation.ApplicationUserId = user.Id;
+            recommendation.ApplicationUser = user;
+            ModelState.Remove("recommendation.ApplicationUser");
+            ModelState.Remove("ApplicationUser");
             if (ModelState.IsValid)
             {
+                
                 _context.Add(recommendation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -95,6 +116,7 @@ namespace final_capstone.Controllers
         }
 
         // GET: Recommendations/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -121,6 +143,7 @@ namespace final_capstone.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RecommendationId,Name,Description,StreetAddress,WebsiteURL,DefaultView,ApplicationUserId,NeighborhoodId,RecommendationTypeId")] Recommendation recommendation)
         {
@@ -158,6 +181,7 @@ namespace final_capstone.Controllers
         }
 
         // GET: Recommendations/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -179,6 +203,7 @@ namespace final_capstone.Controllers
 
         // POST: Recommendations/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

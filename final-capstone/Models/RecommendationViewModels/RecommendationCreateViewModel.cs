@@ -11,9 +11,6 @@ using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
 
-
-
-
 namespace final_capstone.Models.RecommendationViewModels
 {
     public class RecommendationCreateViewModel

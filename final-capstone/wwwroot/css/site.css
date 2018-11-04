@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: lightgray;    
 }
 
 /* Wrapping element */
@@ -12,6 +13,10 @@ body {
     padding-right: 15px;
 }
 
+/*.navbar navbar-inverse navbar-fixed-top {
+    font-family: 'Courier New';
+    font-style: oblique;
+}*/
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

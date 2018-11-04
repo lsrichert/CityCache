@@ -191,20 +191,19 @@ namespace finalcapstone.Migrations
                     StreetAddress = table.Column<string>(nullable: true),
                     WebsiteURL = table.Column<string>(nullable: true),
                     DefaultView = table.Column<bool>(nullable: false),
-                    ApplicationUserId = table.Column<int>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: false),
                     NeighborhoodId = table.Column<int>(nullable: false),
-                    RecommendationTypeId = table.Column<int>(nullable: false),
-                    ApplicationUserId1 = table.Column<string>(nullable: true)
+                    RecommendationTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Recommendation", x => x.RecommendationId);
                     table.ForeignKey(
-                        name: "FK_Recommendation_AspNetUsers_ApplicationUserId1",
-                        column: x => x.ApplicationUserId1,
+                        name: "FK_Recommendation_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Recommendation_Neighborhood_NeighborhoodId",
                         column: x => x.NeighborhoodId,
@@ -224,8 +223,8 @@ namespace finalcapstone.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "d8e565d1-6b07-4c9b-bbd7-698dad017496", 0, "537eeca8-2c5c-4d8d-867c-93aaae8a934c", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEKbrrMyZqmm9EZ3i4mMYUlEjFP04Bz7SpyePvNmnq0baFoEy7nc21rb6WmgOCx8dpg==", null, false, "67fdf855-264a-4eed-8afa-1003e0145e9c", false, "admin@admin.com" },
-                    { "fb0bb898-aae2-4126-9565-32827d1ac8df", 0, "eca30e2c-fd47-43c6-91ac-e22c5a16ea5b", "ApplicationUser", "test@test.com", true, false, null, "TEST@TEST.COM", "TEST@TEST.COM", "AQAAAAEAACcQAAAAEMgFApaF0/W6b2uXCRkopikW9LfgzJgnB3vDUtBOj+dizwSNLl/hpVf4NjBdmEptRA==", null, false, "8b65fb3a-7140-48bd-b17f-d09d11cd19ef", false, "test@test.com" }
+                    { "75723e58-226e-4944-b92c-d1d120fb923d", 0, "969cc20d-764f-4c17-8b30-1626ba538617", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEPaGrvGzm3AgmmQgzyWAb8/xBkh9FO03VKKi+gYrsF8MWP01LOI+TAsPG9IcefvucQ==", null, false, "a26f8940-0e2f-4928-823a-7c8a83cdfff3", false, "admin@admin.com" },
+                    { "9f9be800-3518-42da-a498-aab932931c09", 0, "6c388628-b5c9-4fbc-8ab4-729483b279fe", "ApplicationUser", "test@test.com", true, false, null, "TEST@TEST.COM", "TEST@TEST.COM", "AQAAAAEAACcQAAAAEIdxelnevN1n/Y8tcRIw6La5twZDrzCDRJTdNPVapUnTC1pf8GQAtBC/rGfDnIxCzg==", null, false, "eeffcce7-ecd5-4902-9969-c17441fc33c8", false, "test@test.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -261,14 +260,14 @@ namespace finalcapstone.Migrations
 
             migrationBuilder.InsertData(
                 table: "Recommendation",
-                columns: new[] { "RecommendationId", "ApplicationUserId", "ApplicationUserId1", "DefaultView", "Description", "Name", "NeighborhoodId", "RecommendationTypeId", "StreetAddress", "WebsiteURL" },
+                columns: new[] { "RecommendationId", "ApplicationUserId", "DefaultView", "Description", "Name", "NeighborhoodId", "RecommendationTypeId", "StreetAddress", "WebsiteURL" },
                 values: new object[,]
                 {
-                    { 1, 1, null, false, "Breakfast", "Over Easy", 1, 1, "4943 N. Damen Ave.", "overeasycafechicago.com" },
-                    { 2, 1, null, false, "Contemporary-American", "Hub 51", 5, 1, "51 W. Hubbard St.", "hub51chicago.com" },
-                    { 4, 1, null, false, "American Comfort", "Crosby's Kitchen", 8, 1, "3455 N. Southport Ave.", "crosbyschicago.com" },
-                    { 5, 1, null, false, "Bar", "HopLeaf", 3, 1, "5148 N. Clark St.", "hopleafbar.com" },
-                    { 3, 1, null, false, "Comedy Club", "The Second City", 11, 2, "1616 N. Wells St.", "secondcity.com" }
+                    { 1, "75723e58-226e-4944-b92c-d1d120fb923d", false, "Breakfast", "Over Easy", 1, 1, "4943 N. Damen Ave.", "overeasycafechicago.com" },
+                    { 2, "75723e58-226e-4944-b92c-d1d120fb923d", false, "Contemporary-American", "Hub 51", 5, 1, "51 W. Hubbard St.", "hub51chicago.com" },
+                    { 4, "75723e58-226e-4944-b92c-d1d120fb923d", false, "American Comfort", "Crosby's Kitchen", 8, 1, "3455 N. Southport Ave.", "crosbyschicago.com" },
+                    { 5, "75723e58-226e-4944-b92c-d1d120fb923d", false, "Bar", "HopLeaf", 3, 1, "5148 N. Clark St.", "hopleafbar.com" },
+                    { 3, "75723e58-226e-4944-b92c-d1d120fb923d", false, "Comedy Club", "The Second City", 11, 2, "1616 N. Wells St.", "secondcity.com" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -311,9 +310,9 @@ namespace finalcapstone.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recommendation_ApplicationUserId1",
+                name: "IX_Recommendation_ApplicationUserId",
                 table: "Recommendation",
-                column: "ApplicationUserId1");
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recommendation_NeighborhoodId",

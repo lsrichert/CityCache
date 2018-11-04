@@ -10,7 +10,7 @@ using final_capstone.Data;
 namespace finalcapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181029195738_first-migration")]
+    [Migration("20181102165556_first-migration")]
     partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,9 +58,8 @@ namespace finalcapstone.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApplicationUserId");
-
-                    b.Property<string>("ApplicationUserId1");
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired();
 
                     b.Property<bool>("DefaultView");
 
@@ -81,7 +80,7 @@ namespace finalcapstone.Migrations
 
                     b.HasKey("RecommendationId");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("NeighborhoodId");
 
@@ -90,11 +89,11 @@ namespace finalcapstone.Migrations
                     b.ToTable("Recommendation");
 
                     b.HasData(
-                        new { RecommendationId = 1, ApplicationUserId = 1, DefaultView = false, Description = "Breakfast", Name = "Over Easy", NeighborhoodId = 1, RecommendationTypeId = 1, StreetAddress = "4943 N. Damen Ave.", WebsiteURL = "overeasycafechicago.com" },
-                        new { RecommendationId = 2, ApplicationUserId = 1, DefaultView = false, Description = "Contemporary-American", Name = "Hub 51", NeighborhoodId = 5, RecommendationTypeId = 1, StreetAddress = "51 W. Hubbard St.", WebsiteURL = "hub51chicago.com" },
-                        new { RecommendationId = 3, ApplicationUserId = 1, DefaultView = false, Description = "Comedy Club", Name = "The Second City", NeighborhoodId = 11, RecommendationTypeId = 2, StreetAddress = "1616 N. Wells St.", WebsiteURL = "secondcity.com" },
-                        new { RecommendationId = 4, ApplicationUserId = 1, DefaultView = false, Description = "American Comfort", Name = "Crosby's Kitchen", NeighborhoodId = 8, RecommendationTypeId = 1, StreetAddress = "3455 N. Southport Ave.", WebsiteURL = "crosbyschicago.com" },
-                        new { RecommendationId = 5, ApplicationUserId = 1, DefaultView = false, Description = "Bar", Name = "HopLeaf", NeighborhoodId = 3, RecommendationTypeId = 1, StreetAddress = "5148 N. Clark St.", WebsiteURL = "hopleafbar.com" }
+                        new { RecommendationId = 1, ApplicationUserId = "75723e58-226e-4944-b92c-d1d120fb923d", DefaultView = false, Description = "Breakfast", Name = "Over Easy", NeighborhoodId = 1, RecommendationTypeId = 1, StreetAddress = "4943 N. Damen Ave.", WebsiteURL = "overeasycafechicago.com" },
+                        new { RecommendationId = 2, ApplicationUserId = "75723e58-226e-4944-b92c-d1d120fb923d", DefaultView = false, Description = "Contemporary-American", Name = "Hub 51", NeighborhoodId = 5, RecommendationTypeId = 1, StreetAddress = "51 W. Hubbard St.", WebsiteURL = "hub51chicago.com" },
+                        new { RecommendationId = 3, ApplicationUserId = "75723e58-226e-4944-b92c-d1d120fb923d", DefaultView = false, Description = "Comedy Club", Name = "The Second City", NeighborhoodId = 11, RecommendationTypeId = 2, StreetAddress = "1616 N. Wells St.", WebsiteURL = "secondcity.com" },
+                        new { RecommendationId = 4, ApplicationUserId = "75723e58-226e-4944-b92c-d1d120fb923d", DefaultView = false, Description = "American Comfort", Name = "Crosby's Kitchen", NeighborhoodId = 8, RecommendationTypeId = 1, StreetAddress = "3455 N. Southport Ave.", WebsiteURL = "crosbyschicago.com" },
+                        new { RecommendationId = 5, ApplicationUserId = "75723e58-226e-4944-b92c-d1d120fb923d", DefaultView = false, Description = "Bar", Name = "HopLeaf", NeighborhoodId = 3, RecommendationTypeId = 1, StreetAddress = "5148 N. Clark St.", WebsiteURL = "hopleafbar.com" }
                     );
                 });
 
@@ -298,8 +297,8 @@ namespace finalcapstone.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
 
                     b.HasData(
-                        new { Id = "d8e565d1-6b07-4c9b-bbd7-698dad017496", AccessFailedCount = 0, ConcurrencyStamp = "537eeca8-2c5c-4d8d-867c-93aaae8a934c", Email = "admin@admin.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEKbrrMyZqmm9EZ3i4mMYUlEjFP04Bz7SpyePvNmnq0baFoEy7nc21rb6WmgOCx8dpg==", PhoneNumberConfirmed = false, SecurityStamp = "67fdf855-264a-4eed-8afa-1003e0145e9c", TwoFactorEnabled = false, UserName = "admin@admin.com" },
-                        new { Id = "fb0bb898-aae2-4126-9565-32827d1ac8df", AccessFailedCount = 0, ConcurrencyStamp = "eca30e2c-fd47-43c6-91ac-e22c5a16ea5b", Email = "test@test.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "TEST@TEST.COM", NormalizedUserName = "TEST@TEST.COM", PasswordHash = "AQAAAAEAACcQAAAAEMgFApaF0/W6b2uXCRkopikW9LfgzJgnB3vDUtBOj+dizwSNLl/hpVf4NjBdmEptRA==", PhoneNumberConfirmed = false, SecurityStamp = "8b65fb3a-7140-48bd-b17f-d09d11cd19ef", TwoFactorEnabled = false, UserName = "test@test.com" }
+                        new { Id = "75723e58-226e-4944-b92c-d1d120fb923d", AccessFailedCount = 0, ConcurrencyStamp = "969cc20d-764f-4c17-8b30-1626ba538617", Email = "admin@admin.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEPaGrvGzm3AgmmQgzyWAb8/xBkh9FO03VKKi+gYrsF8MWP01LOI+TAsPG9IcefvucQ==", PhoneNumberConfirmed = false, SecurityStamp = "a26f8940-0e2f-4928-823a-7c8a83cdfff3", TwoFactorEnabled = false, UserName = "admin@admin.com" },
+                        new { Id = "9f9be800-3518-42da-a498-aab932931c09", AccessFailedCount = 0, ConcurrencyStamp = "6c388628-b5c9-4fbc-8ab4-729483b279fe", Email = "test@test.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "TEST@TEST.COM", NormalizedUserName = "TEST@TEST.COM", PasswordHash = "AQAAAAEAACcQAAAAEIdxelnevN1n/Y8tcRIw6La5twZDrzCDRJTdNPVapUnTC1pf8GQAtBC/rGfDnIxCzg==", PhoneNumberConfirmed = false, SecurityStamp = "eeffcce7-ecd5-4902-9969-c17441fc33c8", TwoFactorEnabled = false, UserName = "test@test.com" }
                     );
                 });
 
@@ -307,7 +306,8 @@ namespace finalcapstone.Migrations
                 {
                     b.HasOne("final_capstone.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Recommendations")
-                        .HasForeignKey("ApplicationUserId1");
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("final_capstone.Models.Neighborhood", "Neighborhood")
                         .WithMany()
