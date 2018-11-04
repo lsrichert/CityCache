@@ -17,14 +17,14 @@ namespace final_capstone.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        //private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public RecommendationsController(ApplicationDbContext context)
+        public RecommendationsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
-            //UserManager<ApplicationUser> userManager;
+            _userManager = userManager;
         }
-        //private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
 
         // GET: Recommendations
@@ -71,8 +71,12 @@ namespace final_capstone.Controllers
 
         // GET: Recommendations/Create
         [Authorize]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ApplicationUser user = await GetCurrentUserAsync();
+
+
+
             RecommendationCreateViewModel createRecommendation = new RecommendationCreateViewModel(_context);
             return View(createRecommendation);
 
@@ -87,10 +91,17 @@ namespace final_capstone.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RecommendationId,Name,Description,StreetAddress,WebsiteURL,DefaultView,ApplicationUserId,NeighborhoodId,RecommendationTypeId")] Recommendation recommendation)
+        public async Task<IActionResult> Create(Recommendation recommendation)
         {
+            ApplicationUser user = await GetCurrentUserAsync();
+
+            recommendation.ApplicationUserId = user.Id;
+            recommendation.ApplicationUser = user;
+            ModelState.Remove("recommendation.ApplicationUser");
+            ModelState.Remove("ApplicationUser");
             if (ModelState.IsValid)
             {
+                
                 _context.Add(recommendation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
