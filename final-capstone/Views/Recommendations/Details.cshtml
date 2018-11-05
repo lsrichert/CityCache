@@ -1,4 +1,8 @@
 ﻿@model final_capstone.Models.Recommendation
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Details";
@@ -35,17 +39,17 @@
             @Html.DisplayFor(model => model.WebsiteURL)
         </dd>
         @*<dt>
-            @Html.DisplayNameFor(model => model.DefaultView)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DefaultView)
-        </dd>*@
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUserId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUserId)
-        </dd>
+                @Html.DisplayNameFor(model => model.DefaultView)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DefaultView)
+            </dd>*@
+        @*<dt>
+                @Html.DisplayNameFor(model => model.ApplicationUserId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUserId)
+            </dd>*@
         <dt>
             @Html.DisplayNameFor(model => model.Neighborhood)
         </dt>
@@ -61,6 +65,9 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.RecommendationId">Edit</a> |
+    @if (UserManager.GetUserId(User) == Model.ApplicationUserId)
+    {
+                <a asp-action="Edit" asp-route-id="@Model.RecommendationId">Edit |</a> 
+    }
     <a asp-action="Index">Back to List</a>
 </div>
