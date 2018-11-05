@@ -32,9 +32,11 @@ namespace final_capstone.Models
         public string ApplicationUserId { get; set; }
 
         [Required]
+        [Display(Name = "Neighborhood")]
         public int NeighborhoodId { get; set; }
 
         [Required]
+        [Display(Name = "Category")]
         public int RecommendationTypeId { get; set; }
 
         [Required]
