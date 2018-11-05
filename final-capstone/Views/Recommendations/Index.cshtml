@@ -84,12 +84,10 @@
                     @if (UserManager.GetUserId(User) == item.ApplicationUserId) 
                     {
                         <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-                            <ul class="nav navbar-nav navbar-right">
                                
                                 <a asp-action="Edit" asp-route-id="@item.RecommendationId">Edit</a> |
                                 <a asp-action="Delete" asp-route-id="@item.RecommendationId">Delete</a>
                                
-                            </ul>
                         </form>
                     }
                     <a asp-action="Details" asp-route-id="@item.RecommendationId">Details</a> 
