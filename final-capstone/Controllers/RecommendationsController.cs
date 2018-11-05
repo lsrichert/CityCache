@@ -24,25 +24,32 @@ namespace final_capstone.Controllers
             _context = context;
             _userManager = userManager;
         }
+
+        //this task retrieves the currently authenticated user:
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
 
         // GET: Recommendations
-
         public async Task<IActionResult> Index(string searchString)
         {
 
-            var applicationDbContext = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType);
+            var applicationDbContext = _context.Recommendation
+                .Include(r => r.Neighborhood)
+                .Include(r => r.RecommendationType);
+
 
             //var recommendations = from r in _context.Recommendation
             //             select r;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                var searchResults = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType).Where(r => r.Neighborhood.Name.Contains(searchString));
+
+                var searchResults = _context.Recommendation
+                    .Include(r => r.Neighborhood)
+                    .Include(r => r.RecommendationType)
+                    .Where(r => r.Neighborhood.Name.Contains(searchString));
                 return View(await searchResults.ToListAsync());
             }
-
             return View(await applicationDbContext.ToListAsync());
 
             //var applicationDbContext = _context.Recommendation.Include(r => r.Neighborhood).Include(r => r.RecommendationType);
@@ -58,6 +65,7 @@ namespace final_capstone.Controllers
             }
 
             var recommendation = await _context.Recommendation
+                .Include(r => r.ApplicationUser)
                 .Include(r => r.Neighborhood)
                 .Include(r => r.RecommendationType)
                 .FirstOrDefaultAsync(m => m.RecommendationId == id);
@@ -119,16 +127,19 @@ namespace final_capstone.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
             }
+
 
             var recommendation = await _context.Recommendation.FindAsync(id);
             if (recommendation == null)
             {
                 return NotFound();
             }
+
 
             RecommendationEditViewModel editRecommendation = new RecommendationEditViewModel(_context);
             editRecommendation.Recommendation = recommendation;
@@ -151,6 +162,13 @@ namespace final_capstone.Controllers
             {
                 return NotFound();
             }
+
+            ApplicationUser user = await GetCurrentUserAsync();
+
+            recommendation.ApplicationUserId = user.Id;
+            recommendation.ApplicationUser = user;
+            ModelState.Remove("recommendation.ApplicationUser");
+            ModelState.Remove("ApplicationUser");
 
             if (ModelState.IsValid)
             {
