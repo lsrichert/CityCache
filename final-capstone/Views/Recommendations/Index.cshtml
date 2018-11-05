@@ -81,18 +81,14 @@
                     @Html.DisplayFor(modelItem => item.RecommendationType.Name)
                 </td>
                 <td>
-                    @if (SignInManager.IsSignedIn(User))
+                    @if (UserManager.GetUserId(User) == item.ApplicationUserId) 
                     {
                         <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
                             <ul class="nav navbar-nav navbar-right">
-                                @*<li>
-                                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-                                </li>*@
+                               
                                 <a asp-action="Edit" asp-route-id="@item.RecommendationId">Edit</a> |
                                 <a asp-action="Delete" asp-route-id="@item.RecommendationId">Delete</a>
-                                @*<li>
-                                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
-                                </li>*@
+                               
                             </ul>
                         </form>
                     }

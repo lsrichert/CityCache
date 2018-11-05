@@ -24,16 +24,16 @@ namespace final_capstone.Controllers
             _context = context;
             _userManager = userManager;
         }
+
+        //this task retrieves the currently authenticated user:
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
 
         // GET: Recommendations
         public async Task<IActionResult> Index(string searchString)
         {
-            ApplicationUser user = await GetCurrentUserAsync();
 
             var applicationDbContext = _context.Recommendation
-                .Include(r => r.ApplicationUser)
                 .Include(r => r.Neighborhood)
                 .Include(r => r.RecommendationType);
 
