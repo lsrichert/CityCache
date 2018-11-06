@@ -1,5 +1,7 @@
-﻿@*I commented out this code for now because I don't currently need delete functionality for neighborhoods'*@
-@*@model final_capstone.Models.Neighborhood
+﻿@*This code will not work until you un-comment out the delete button in the index view of neighborhoods.
+    I did not want any user to be able to delete these entries so have restricted access'*@
+
+@model final_capstone.Models.Neighborhood
 
 @{
     ViewData["Title"] = "Delete";
@@ -25,4 +27,4 @@
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-</div>*@
+</div>

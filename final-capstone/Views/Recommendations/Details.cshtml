@@ -8,10 +8,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h3>Recommendation Details</h3>
 
 <div>
-    <h4>Recommendation</h4>
+    @*<h4>Recommendation</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,24 +32,7 @@
         <dd>
             @Html.DisplayFor(model => model.StreetAddress)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.WebsiteURL)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WebsiteURL)
-        </dd>
-        @*<dt>
-                @Html.DisplayNameFor(model => model.DefaultView)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DefaultView)
-            </dd>*@
-        @*<dt>
-                @Html.DisplayNameFor(model => model.ApplicationUserId)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ApplicationUserId)
-            </dd>*@
+
         <dt>
             @Html.DisplayNameFor(model => model.Neighborhood)
         </dt>
@@ -57,10 +40,16 @@
             @Html.DisplayFor(model => model.Neighborhood.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.RecommendationType)
+            Category
         </dt>
         <dd>
             @Html.DisplayFor(model => model.RecommendationType.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WebsiteURL)
+        </dt>
+        <dd>
+               <a href="http://@Model.WebsiteURL">http://@Model.WebsiteURL</a>
         </dd>
     </dl>
 </div>
