@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace final_capstone.Models
 {
     public class Recommendation
@@ -23,10 +24,11 @@ namespace final_capstone.Models
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
+        //[DataType(DataType.Url)]
         [Display(Name = "Website")]
         public string WebsiteURL { get; set; }
 
-        [Required]
+        //[Required]
         public bool DefaultView { get; set; }
 
         public string ApplicationUserId { get; set; }
