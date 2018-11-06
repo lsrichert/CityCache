@@ -1,6 +1,6 @@
-﻿@*I commented out this code for now because I don't need delete functionality for types right now'*@
-
-@*@model final_capstone.Models.RecommendationType
+﻿@*//This code will not work unless you un-comment out the delete button on the index view of recommendationType. I do not 
+    want any user to be able to delete this so have restricted that functionality unless needed by admin*@
+@model final_capstone.Models.RecommendationType
 
 @{
     ViewData["Title"] = "Delete";
@@ -26,4 +26,4 @@
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-</div>*@
+</div>

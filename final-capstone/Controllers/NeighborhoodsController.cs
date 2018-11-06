@@ -119,38 +119,38 @@ namespace final_capstone.Controllers
         //    return View(neighborhood);
         //}
 
-        // GET: Neighborhoods/Delete/5
-        //    public async Task<IActionResult> Delete(int? id)
-        //    {
-        //        if (id == null)
-        //        {
-        //            return NotFound();
-        //        }
+        //GET: Neighborhoods/Delete/5
+            public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //        var neighborhood = await _context.Neighborhood
-        //            .FirstOrDefaultAsync(m => m.NeighborhoodId == id);
-        //        if (neighborhood == null)
-        //        {
-        //            return NotFound();
-        //        }
+            var neighborhood = await _context.Neighborhood
+                .FirstOrDefaultAsync(m => m.NeighborhoodId == id);
+            if (neighborhood == null)
+            {
+                return NotFound();
+            }
 
-        //        return View(neighborhood);
-        //    }
+            return View(neighborhood);
+        }
 
-        //    // POST: Neighborhoods/Delete/5
-        //    [HttpPost, ActionName("Delete")]
-        //    [ValidateAntiForgeryToken]
-        //    public async Task<IActionResult> DeleteConfirmed(int id)
-        //    {
-        //        var neighborhood = await _context.Neighborhood.FindAsync(id);
-        //        _context.Neighborhood.Remove(neighborhood);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
+        // POST: Neighborhoods/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var neighborhood = await _context.Neighborhood.FindAsync(id);
+            _context.Neighborhood.Remove(neighborhood);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
-        //    private bool NeighborhoodExists(int id)
-        //    {
-        //        return _context.Neighborhood.Any(e => e.NeighborhoodId == id);
-        //    }
+        private bool NeighborhoodExists(int id)
+        {
+            return _context.Neighborhood.Any(e => e.NeighborhoodId == id);
+        }
     }
 }

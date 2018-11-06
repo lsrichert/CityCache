@@ -120,37 +120,37 @@ namespace final_capstone.Controllers
         //}
 
         // GET: RecommendationTypes/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var recommendationType = await _context.RecommendationType
-        //        .FirstOrDefaultAsync(m => m.RecommendationTypeId == id);
-        //    if (recommendationType == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var recommendationType = await _context.RecommendationType
+                .FirstOrDefaultAsync(m => m.RecommendationTypeId == id);
+            if (recommendationType == null)
+            {
+                return NotFound();
+            }
 
-        //    return View(recommendationType);
-        //}
+            return View(recommendationType);
+        }
 
         //// POST: RecommendationTypes/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var recommendationType = await _context.RecommendationType.FindAsync(id);
-        //    _context.RecommendationType.Remove(recommendationType);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var recommendationType = await _context.RecommendationType.FindAsync(id);
+            _context.RecommendationType.Remove(recommendationType);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
-        //private bool RecommendationTypeExists(int id)
-        //{
-        //    return _context.RecommendationType.Any(e => e.RecommendationTypeId == id);
-        //}
+        private bool RecommendationTypeExists(int id)
+        {
+            return _context.RecommendationType.Any(e => e.RecommendationTypeId == id);
+        }
     }
 }
