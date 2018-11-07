@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADjman00r7UGnvau8AMJHKQAAAAACAAAAAAAQZgAAAAEAACAAAADyTrzi7aXWhgmXWdxzmEUp2pYff1E9YPN09hT7cghlCAAAAAAOgAAAAAIAACAAAACW0drYZBghYIWVh5mA7SCNwiVftCfQSFDOw1hZZo/e/YAAAADYgLdsy0JS7fuVPKuAHXNMxgwMCc9OBXCkKV3H4cMJrlzpm45B/2m7Bx/ikuleNrBTpt3BSJQ73C5e0WYYpUNH00wH7bJ/cACZiNf8z3PFwYqv6AKON/Yx/yTzRLbeeYox5t1exNuGeV1WBPZIqepbePduxrmA/m80vN9CG4RVnEAAAABClwTmS6TZhiWm8fkj2JEUpLk0Za+waM3lwheCOK/j+GArKV6cAOnLE4zeB7PfdlTV/zxIf9LSXf2vVAugo7k5</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:citycacheserver.database.windows.net,1433%3bInitial Catalog=CityCache%3bPersist Security Info=False%3bUser ID=lrichert%3bPassword=techschool0!%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="final_capstone.Data.ApplicationDbContext">
+      <Value>Server=tcp:citycacheserver.database.windows.net,1433%3bInitial Catalog=CityCache%3bPersist Security Info=False%3bUser ID=lrichert%3bPassword=techschool0!%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
