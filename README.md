@@ -8,7 +8,7 @@ experience the best of Chicago.
 ![image](https://user-images.githubusercontent.com/39492964/48176794-63805180-e2d7-11e8-9124-0341000fde39.png)
 
 ![image](https://user-images.githubusercontent.com/39492964/48176803-6bd88c80-e2d7-11e8-8127-9f28bba15c6c.png)
-
+ABOUT CITY CACHE:
 A user can view a list of all recommendations immediately upon visiting the site. If the user would like, they can register and 
 login to add their own recommendations. Recommendations can be edited or deleted, but only by the user who created them. A user 
 can add a neighborhood if they would like, or they can just choose 'Other' in the 'Neighborhood' drop-down in the create form. 
